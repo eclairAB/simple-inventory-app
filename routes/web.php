@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Components\TextInput;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,15 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/demo', function() {
+    $input = TextInput::make('email')
+        ->label('Email Address');
+
+    return view('demo', [
+        'input' => $input,
+    ]);
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
