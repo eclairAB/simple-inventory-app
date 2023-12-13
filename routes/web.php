@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,14 +19,14 @@ use App\Components\TextInput;
 |
 */
 
-Route::get('/demo', function() {
-    $input = TextInput::make('email')
-        ->label('Email Address');
+// Route::get('/demo', function() {
+//     $input = TextInput::make('email')
+//         ->label('Email Address');
 
-    return view('demo', [
-        'input' => $input,
-    ]);
-});
+//     return view('demo', [
+//         'input' => $input,
+//     ]);
+// });
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -39,6 +40,13 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/product-page', function () {
+//     return Inertia::render('Product');
+// })->middleware(['auth', 'verified'])->name('product-page');
+
+Route::get('/product-page',ProductController::class)->name('product-page');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

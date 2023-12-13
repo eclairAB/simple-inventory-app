@@ -8,6 +8,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        './node_modules/@protonemedia/inertiajs-tables-laravel-query-builder/**/*.{js,vue}',
     ],
 
     theme: {
